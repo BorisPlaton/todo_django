@@ -15,11 +15,15 @@
                 {% endfor %}
             </div>
         {% endfor %}
-        <div class="mb-2">
+        <div class="mb-1">
             <small>
                 <a href="{% url 'users:register' %}" class="link-primary" style="text-decoration: none;">Create an account</a>
             </small>
         </div>
+
+        {% for i in form.non_field_errors %}
+           <small class='text-danger'> {{ i }}</small>
+        {% endfor %}
         <div class="d-flex justify-content-center mt-4">
             <button type='submit' class='btn border-0 button purple'>Log in</button>
         </div>

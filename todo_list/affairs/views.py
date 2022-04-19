@@ -5,4 +5,4 @@ from django.shortcuts import render
 # Create your views here.
 def home(request):
     """Личный кабинет пользователя"""
-    return HttpResponse("")
+    return render(request, 'affairs/home.html')

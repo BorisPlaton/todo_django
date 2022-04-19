@@ -23,3 +23,8 @@ a {
 .purple {
 	background: #af6bbf;
 }
+
+.completed {
+	background-color: #dca2eb;
+	color: #57274f;
+}
