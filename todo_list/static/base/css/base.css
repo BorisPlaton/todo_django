@@ -1,0 +1,25 @@
+body {
+	background: #1b1724;
+}
+
+a {
+	text-decoration: none;
+}
+
+.menu {
+	border: 1px solid #84578f;
+	background: #17131f;
+}
+
+.button {
+	color: #2d1333;
+	transition: 0.1s all ease-out;
+}
+
+.button:hover {
+	opacity: 0.75;
+}
+
+.purple {
+	background: #af6bbf;
+}

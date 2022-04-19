@@ -3,6 +3,7 @@ from django.db import models
 
 
 class Affair(models.Model):
+    """Список дел"""
     title = models.CharField(max_length=127, verbose_name='Заголовок')
     text = models.CharField(max_length=2047, verbose_name='Список дел')
     date_add = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')

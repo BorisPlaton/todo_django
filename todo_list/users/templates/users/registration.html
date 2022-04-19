@@ -1,0 +1,29 @@
+{% extends 'users/base.html' %}
+
+{% block title %} Registration {% endblock %}
+
+{% block form %}
+
+    <h5 class="text-light text-center fw-bold mb-3">Registration</h5>
+    <form action="{% url 'users:register' %}" method="post" novalidate="">
+        {% csrf_token %}
+        
+        {% for field in form %}
+            <div class="mb-2">
+                {{ field }}
+                {% for error in field.errors %}
+                    <small class='text-danger'>{{ error }}</small><br>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <div class="mb-2">
+            <small>
+                <a href="{% url 'users:login' %}" class="link-primary" style="text-decoration: none;">Already have an account?</a>
+            </small>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <button type='submit' class='btn border-0 button purple'>Create</button>
+        </div>
+    </form>
+
+{% endblock %}
