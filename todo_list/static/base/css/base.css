@@ -4,6 +4,7 @@ body {
 
 a {
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .menu {
@@ -24,7 +25,33 @@ a {
 	background: #af6bbf;
 }
 
+.task {
+	background: rgba(23, 6, 26, 0.2);
+	transition: 0.1s all ease-out;
+}
+
+.task:hover  {
+	background: rgba(23, 6, 26, 0.5);
+}
+
 .completed {
-	background-color: #dca2eb;
+	background: #dca2eb;
 	color: #57274f;
+	transition: 0.2s all ease-out;
+}
+
+.completed:hover {
+	background: #da91ed;
+}
+
+.circle  {
+	width: 26px;
+	height: 26px;
+	border-radius: 13px;
+}
+
+.process {
+	width: 26px;
+	height: 26px;
+	border-radius: 13px;
 }
