@@ -10,7 +10,7 @@ from affairs.services import get_affairs_list
 def home(request):
     """Личный кабинет пользователя"""
     context = {
-        "affairs_list": get_affairs_list(request, values=['title', 'date_add', "pk"])
+        "affairs_list": get_affairs_list(request, values=['title', 'date_add', 'is_completed'])
     }
     return render(request, 'affairs/home.html', context=context)
 
