@@ -7,5 +7,5 @@ app_name = 'affairs'
 
 urlpatterns = [
     path('', views.home, name="home"),
-    path(r'^add_affair/$', add_affair, name='add_affair'),
+    path(r'add_affair/', add_affair, name='add_affair'),
 ]

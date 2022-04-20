@@ -1,0 +1,29 @@
+{% extends "affairs/base.html" %}
+
+{% block content %}
+<div class="rounded menu p-4 px-5">
+
+    <form action="{% url 'affairs:add_affair' %}" method="POST" novalidate>
+        {% csrf_token %}
+        <div class="row row-cols-1 g-4">
+            {% for field in form %}
+            <div class="col">
+                <div class="row row-cols-1 text-light g-1">
+                    <div class="col">
+                        <h5 class='fw-bold'>{{ field.label }}</h5>
+                    </div>
+
+                    <div class="col">
+                        {{ field }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="col">
+                <input type="submit" class='btn completed' value="Сохранить">
+            </div>
+        </div>
+    </form>
+
+</div>
+{% endblock %}

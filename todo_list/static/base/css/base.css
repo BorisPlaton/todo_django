@@ -55,3 +55,8 @@ a {
 	height: 26px;
 	border-radius: 13px;
 }
+
+.dark-bg {
+	background: #4b4252;
+	color: white;
+}

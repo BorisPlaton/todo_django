@@ -16,82 +16,89 @@
 	<div class="container">
 		<div class="row g-4">
 
-    <div class="col-12">
-        <div class="p-5 rounded menu">
-        	<a href="{% url 'affairs:home' %}">
-	            <h2 class='m-0 fw-bold text-light'>
-	                To Do
-	            </h2>
-            </a>
-        </div>
-    </div>
-
-    <!-- Информация о пользователе -->
-    <div class="col-12">
-        <div class="p-4 px-5 rounded menu">
-            <div class="row g-4">
-
-                <div class="col-auto">
-                    <span class='m-0 fs-4 text-light fw-bold'>{{ request.user.username }}</span>
+            <div class="col-12">
+                <div class="p-5 rounded menu">
+                	<a href="{% url 'affairs:home' %}">
+        	            <h2 class='m-0 fw-bold text-light'>
+        	                To Do
+        	            </h2>
+                    </a>
                 </div>
+            </div>
 
-                <div class="col-auto">
-                    <div class="row g-2">
+            <!-- Информация о пользователе -->
+            <div class="col-12">
+                <div class="p-4 px-5 rounded menu">
+                    <div class="row g-4">
 
-                        <div class='col-auto'>
-                        	<a href="{% url 'affairs:home' %}">
-	                            <div class="py-2 px-4 rounded completed">
-	                                <small>Всего:</small>
-	                                <small class="fw-bold">{{ request.user.affair_set.count }}</small>
-	                            </div>
-                            </a>
+                        <div class="col-auto">
+                            <span class='m-0 fs-4 text-light fw-bold'>{{ request.user.username }}</span>
                         </div>
 
-                        <div class='col-auto'>
-                        	<a href="{% url 'affairs:home' %}?affair_status=completed">
-	                            <div class="py-2 px-4 rounded completed">
-	                                <small>Выполенно:</small>
-	                                <small class="fw-bold">{{ request.user.completed_affairs_amount }}</small>
-	                            </div>
-	                        </a>
-                        </div>
+                        <div class="col-auto">
+                            <div class="row g-2">
 
-                        <div class='col-auto'>
-                        	<a href="{% url 'affairs:home' %}?affair_status=process">
-	                            <div class="py-2 px-4 rounded completed">
-	                                <small>В процессе:</small>
-	                                <small class="fw-bold">{{ request.user.in_process_affairs_amount }}</small>
-	                            </div>
-	                        </a>
+                                <div class='col-auto'>
+                                	<a href="{% url 'affairs:home' %}">
+        	                            <div class="py-2 px-4 rounded completed">
+        	                                <small>Всего:</small>
+        	                                <small class="fw-bold">{{ request.user.affair_set.count }}</small>
+        	                            </div>
+                                    </a>
+                                </div>
+
+                                <div class='col-auto'>
+                                	<a href="{% url 'affairs:home' %}?affair_status=completed">
+        	                            <div class="py-2 px-4 rounded completed">
+        	                                <small>Выполенно:</small>
+        	                                <small class="fw-bold">{{ request.user.completed_affairs_amount }}</small>
+        	                            </div>
+        	                        </a>
+                                </div>
+
+                                <div class='col-auto'>
+                                	<a href="{% url 'affairs:home' %}?affair_status=process">
+        	                            <div class="py-2 px-4 rounded completed">
+        	                                <small>В процессе:</small>
+        	                                <small class="fw-bold">{{ request.user.in_process_affairs_amount }}</small>
+        	                            </div>
+        	                        </a>
+                                </div>
+
+                            </div>
                         </div>
 
                     </div>
                 </div>
-
             </div>
-        </div>
-    </div>
 
-    <!-- Боковое меню -->
-    <div class="col-auto">
-        <div class="p-4 px-5 rounded menu">
-            <div class="d-flex flex-column">
-                <small class="mb-1"><a href="" class="link-light"><i class="bi bi-plus-lg me-1"></i>Добавить запись</a></small>
-                {% if request.user.is_authenticated %}
-                    <small><a href="{% url 'users:logout' %}" class="link-light"><i class="bi bi-box-arrow-left me-1"></i>Выйти</a></small>
-                {% else %}
-                    <small><a href="{% url 'users:login' %}" class="link-light"><i class="bi bi-box-arrow-in-left me-1"></i>Войти</a></small>
+            <!-- Боковое меню -->
+            <div class="col-auto">
+                <div class="p-4 px-5 rounded menu">
+                    <div class="d-flex flex-column">
+                            <small class="mb-1"><a href="{% url 'affairs:home' %}" class="link-light"><i class="bi bi-list me-1"></i>Список дел</a></small>
+                            <small class="mb-1"><a href="{% url 'affairs:add_affair' %}" class="link-light"><i class="bi bi-plus-lg me-1"></i>Добавить запись</a></small>
+                            <small><a href="{% url 'users:logout' %}" class="link-light"><i class="bi bi-box-arrow-left me-1"></i>Выйти</a></small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.extra_tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
                 {% endif %}
+
+                {% block content %}
+                {% endblock %}
+
             </div>
+
         </div>
-    </div>
-
-    <div class="col">
-        {% block content %}
-        {% endblock %}
-    </div>
-
-</div>
 	</div>
 </div>
 

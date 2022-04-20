@@ -15,11 +15,14 @@ class UserRegistrationForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         """Инициализация формы. Устанавливаем стили формам"""
+
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
-            field.widget.attrs = {'class': 'form-control',
-                                  'autocomplete': "off",
-                                  'placeholder': field.label}
+            field.widget.attrs.update({
+                'class': 'form-control',
+                'autocomplete': "off",
+                'placeholder': field.label
+            })
 
     class Meta:
         model = User
@@ -27,6 +30,7 @@ class UserRegistrationForm(ModelForm):
 
     def clean_password2(self):
         """Проверяет тождество паролей"""
+
         password1 = self.cleaned_data['password1']
         password2 = self.cleaned_data['password2']
         if password1 != password2:
@@ -34,6 +38,8 @@ class UserRegistrationForm(ModelForm):
         return password2
 
     def save(self, commit=True):
+        """Создаем пользователя"""
+
         user = User.objects.create_user(self.cleaned_data['username'],
                                         self.cleaned_data['email'],
                                         self.cleaned_data['password1'])
@@ -44,11 +50,15 @@ class UserLoginForm(AuthenticationForm):
     """Форма авторизации пользователя"""
 
     def __init__(self, *args, **kwargs):
+        """Инициализация формы. Устанавливаем стили формам"""
+
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
-            field.widget.attrs = {'class': 'form-control',
-                                  'autocomplete': "off",
-                                  'placeholder': field.label}
+            field.widget.attrs.update({
+                'class': 'form-control',
+                'autocomplete': "off",
+                'placeholder': field.label
+            })
 
     class Meta:
         model = User

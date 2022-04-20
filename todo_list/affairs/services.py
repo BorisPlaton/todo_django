@@ -9,3 +9,12 @@ def get_affairs_list(request, values=None):
 
     return request.user.get_affairs_list(*values)
 
+
+def save_affair_from_form(request, form):
+    """Сохраняет запись из ModelForm"""
+
+    if form.is_valid():
+        affair = form.save(commit=False)
+        affair.author = request.user
+        affair.save()
+        return affair
