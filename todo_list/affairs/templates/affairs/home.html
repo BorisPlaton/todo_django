@@ -9,17 +9,21 @@
             <div class='task p-3 rounded'>
                 <div class='row text-light g-3'>
 
-                    <div class="col-auto">
+                    <div class="col-auto d-flex align-items-center">
                         <span class='lead'>{{ affair.title }}</span>
                     </div>
 
                     <div class="col-auto d-flex align-items-center">
-                        <span class='lead fs-6'>{{ affair.date_add|date:'F d, Y' }}</span>
+                        <span class='lead fs-6'>{{ affair.date_add|date:'F j, Y' }}</span>
                     </div>
 
                     <div class="col d-flex justify-content-end align-items-center">
                         <div class="d-flex justify-content-end align-items-center text-center">
                             {% if affair.is_completed %}
+                                <div class="d-flex flex-column justify-content-center align-items-end me-3">
+                                    <small>{{ affair.date_end|date:'F j, Y' }}</small>
+                                    <small>{{ affair.date_end|date:'H:i' }}</small>
+                                </div>
                                 <div class="circle  bg-success">
                                     <i class="bi bi-check-lg"></i>
                                 </div>

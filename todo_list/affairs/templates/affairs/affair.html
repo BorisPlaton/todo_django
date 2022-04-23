@@ -2,4 +2,31 @@
 
 {% block content %}
 
+<div class="rounded menu p-4 px-5">
+
+    <form action="{% url 'affairs:affair' affair_id=affair.pk %}" method="POST" novalidate>
+        {% csrf_token %}
+        <div class="row row-cols-1 g-4">
+            {% for field in form %}
+            <div class="col">
+                <div class="row row-cols-1 text-light g-1">
+                    <div class="col">
+                        <h5 class='fw-bold'>{{ field.label }}</h5>
+                    </div>
+
+                    <div class="col">
+                        {{ field }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="col">
+                <button type="submit" class='btn completed' name='save' value="save">Сохранить</button>
+                <button type="submit" class='btn btn-danger ms-1' name='delete' value="delete">Удалить</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
 {% endblock %}

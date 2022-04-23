@@ -16,4 +16,4 @@ class Affair(models.Model):
         return f"{self.author.username} - {self.title}"
 
     class Meta:
-        ordering = ("-date_add",)
+        ordering = ["is_completed", "-date_add"]
