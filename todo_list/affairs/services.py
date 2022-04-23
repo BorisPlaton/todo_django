@@ -1,5 +1,17 @@
-def get_affairs_list(request, values=None):
-    """Возвращает список дел в зависимости от параметра affair_status в URL"""
+def get_affair(request, values: list = None):
+    """
+    Возвращает QuerySet с полями из списка values,
+    по умолчанию включает все атрибуты.
+    """
+    pass
+
+
+def get_affairs_list(request, values: list = None):
+    """
+    Возвращает QuerySet списка дел с полями из списка values,
+    по умолчанию включает все поля, в зависимости от параметра
+    affair_status в URL.
+    """
 
     affair_status = request.GET.get('affair_status', "")
     if affair_status == 'completed':

@@ -9,12 +9,19 @@ from affairs.services import get_affairs_list, save_affair_from_form
 
 @login_required
 def home(request):
-    """Личный кабинет пользователя"""
+    """Список записей"""
 
     context = {
-        "affairs_list": get_affairs_list(request, values=['title', 'date_add', 'is_completed'])
+        "affairs_list": get_affairs_list(request, values=['title', 'date_add', 'is_completed', 'pk'])
     }
     return render(request, 'affairs/home.html', context=context)
+
+
+@login_required
+def affair(request, affair_id):
+    """Страница записи"""
+
+    return render(request, 'affairs/affair.html')
 
 
 @login_required

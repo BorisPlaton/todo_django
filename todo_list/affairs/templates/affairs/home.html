@@ -5,7 +5,7 @@
 
     {% if affairs_list %}
         {% for affair in affairs_list %}
-        <a href="" class='p-0'>
+        <a href="{% url 'affairs:affair' affair_id=affair.pk %}" class='p-0'>
             <div class='task p-3 rounded'>
                 <div class='row text-light g-3'>
 
